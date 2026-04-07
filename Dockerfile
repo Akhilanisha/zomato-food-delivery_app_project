@@ -6,6 +6,8 @@ RUN npm ci --only=production
 COPY . .
 # Fix for Node.js 17+ / webpack 4 compatibility
 ENV NODE_OPTIONS=--openssl-legacy-provider
+# Disable ESLint to avoid subpath export errors
+ENV DISABLE_ESLINT_PLUGIN=true
 RUN npm run build
 
 # Production stage
